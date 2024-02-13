@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import { useAuth } from "react";
+import { useAuth } from "../contexts/authentication";
 import { Input } from "@chakra-ui/react";
 import { InputGroup } from "@chakra-ui/react";
 import { InputRightElement } from "@chakra-ui/react";
@@ -9,7 +9,7 @@ import Navbar from "../components/Navbar.jsx";
 function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const { login } = useAuth();
+  const { login } = useAuth();
 
   const handleSubmit = (event) => {
     event.preventDefault();

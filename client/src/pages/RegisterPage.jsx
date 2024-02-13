@@ -1,13 +1,25 @@
 import { useState } from "react";
+import { useAuth } from "../contexts/authentication";
 
 function RegisterPage() {
   const [username, setUsername] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
+  const [firstName, setFirstname] = useState("");
+  const [lastName, setLastname] = useState("");
   const [password, setPassword] = useState("");
 
+  const { register } = useAuth();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = {
+      username,
+      password,
+      firstName,
+      lastName,
+    };
+    register(data);
+  };
   return (
-    <div classNAme="register-form-container">
+    <div className="register-form-container">
       <form className="register-form" onSubmit={handlesubmit}>
         <h1>Sign Up</h1>
         <div className="input-comtainer">
@@ -21,7 +33,7 @@ function RegisterPage() {
               onChange={(event) => {
                 setUsername(event.target.value);
               }}
-              value="usename"
+              value={username}
             />
           </label>
         </div>
@@ -51,7 +63,7 @@ function RegisterPage() {
               onChange={(event) => {
                 setFirstname(event.target.value);
               }}
-              value={firstname}
+              value={firstName}
             />
           </label>
         </div>
@@ -66,7 +78,7 @@ function RegisterPage() {
               onChange={(event) => {
                 setLastname(event.target.value);
               }}
-              value={lastname}
+              value={lastName}
             />
           </label>
         </div>
