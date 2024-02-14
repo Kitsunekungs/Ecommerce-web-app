@@ -5,11 +5,15 @@ import { InputGroup } from "@chakra-ui/react";
 import { InputRightElement } from "@chakra-ui/react";
 import { IconButton } from "@chakra-ui/react";
 import { PhoneIcon } from "@chakra-ui/icons";
-import Navbar from "../components/Navbar.jsx";
+import UnauthNavbar from "../components/UnauthNavbar.jsx";
+import { useNavigate } from "react-router-dom";
+
 function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { login } = useAuth();
+
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -21,14 +25,14 @@ function LoginPage() {
   return (
     <div className="bg-gray-300 min-h-screen">
       <div>
-        <Navbar />
+        <UnauthNavbar />
       </div>
       <div className="mx-auto flex min-h-screen w-full flex-col items-center justify-center">
         <div>
-          <h1>Login Page</h1>
+          <h1 className="flex box-border pb-5">Login Page</h1>
         </div>
         <form className="login-form" onSubmit={handleSubmit}>
-          <div className="box-border">
+          <div className="flex box-border pb-3">
             <label>
               Username
               <InputGroup>
@@ -45,7 +49,7 @@ function LoginPage() {
               </InputGroup>
             </label>
           </div>
-          <div className="input-container">
+          <div className="box">
             <label>
               Password
               <InputGroup>
@@ -62,8 +66,25 @@ function LoginPage() {
               </InputGroup>
             </label>
           </div>
-          <div className="form-actions">
-            <button type="submit">Login</button>
+          <br />
+          <div className="flex justify-between box-border pt-3">
+            <button
+              type="submit"
+              href="#"
+              class="flex box-border rounded bg-slate-700 px-4 py-2 text-sm text-gray-400  hover:text-violet-600 "
+              role="menuitem"
+              tabindex="-1"
+              id="user-menu-item-2"
+            >
+              Login
+            </button>
+            <button
+              class="flex box-border 
+              rounded bg-slate-700  px-4 py-2 text-sm text-gray-400  hover:text-violet-600 "
+              onClick={() => navigate(`/register`)}
+            >
+              Register
+            </button>
           </div>
         </form>
       </div>

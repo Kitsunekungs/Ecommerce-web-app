@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Box } from "@chakra-ui/react";
 import { Container } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/authentication";
 import { Input } from "@chakra-ui/react";
 import { InputGroup } from "@chakra-ui/react";
 import { InputRightElement } from "@chakra-ui/react";
@@ -11,17 +10,16 @@ import { Search2Icon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import hammer from "../assets/hammer.png";
 
-function Navbar() {
-  const { logout } = useAuth();
+function UnauthNavbar() {
   const navigate = useNavigate();
   const [search, setSearch] = useState();
   return (
     <nav className="bg-gray-800 box-border">
       <div className="relative box-border max-w flex flex-row justify-between flex-wrap items-center mx-auto p-5">
         <Link
-          to="/AuthHomePage"
+          to="/"
           href="#"
-          onClick={() => navigate(`/AuthHomePage`)}
+          onClick={() => navigate(`/`)}
           className="flex border-box rounded-full border-solid border-1 p-3 bg-black hover:bg-violet-600 text-white active:bg-violet-700"
         >
           <img src={hammer} className="w-5 h-5" />
@@ -73,11 +71,9 @@ function Navbar() {
             role="menuitem"
             tabindex="-1"
             id="user-menu-item-2"
-            onClick={() => {
-              logout();
-            }}
+            onClick={() => navigate(`/login`)}
           >
-            Logout
+            Login
           </a>
         </div>
       </div>
@@ -85,4 +81,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default UnauthNavbar;

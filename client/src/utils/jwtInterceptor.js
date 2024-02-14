@@ -18,13 +18,12 @@ function jwtInterceptor() {
       return req;
     },
     (error) => {
-      // 🐨 Todo: Exercise #6
       if (
         error.response.status === 401 &&
         error.response.statusText === "Unauthorized"
       ) {
         window.localStorage.removeItem("token");
-        window.location.replace("/");
+        window.location.replace("/login");
       }
       return Promise.reject(error);
     }

@@ -20,7 +20,7 @@ function AuthProvider(props) {
     localStorage.setItem("token", token);
     const userDataFromToken = jwtDecode(token);
     setState({ ...state, user: userDataFromToken });
-    navigate("/");
+    navigate("/AuthHomePage");
   };
 
   const register = async (data) => {
@@ -31,6 +31,7 @@ function AuthProvider(props) {
   const logout = () => {
     localStorage.removeItem("token");
     setState({ ...state, user: null });
+    navigate("/login");
   };
 
   const isAuthenticated = Boolean(localStorage.getItem("token"));

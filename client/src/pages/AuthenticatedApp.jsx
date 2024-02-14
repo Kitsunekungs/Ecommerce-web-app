@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
-import HomePage from "./HomePage";
+import AuthHomePage from "./AuthHomePage";
 import CartPage from "./CartPage";
 import ViewPage from "./ViewPage";
 import ProductPage from "./ProductPage";
@@ -11,10 +11,10 @@ function AuthenticatedApp() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/AuthHomePage" element={<AuthHomePage />} />
         <Route path="/cart" element={<CartPage />} />
-        <Route path="/post/view/:postId" element={<ViewPage />} />
-        <Route path="/prduct/:postId" element={<ProductPage />} />
+        <Route path="/view" element={<ViewPage />} />
+        <Route path="/products" element={<ProductPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
