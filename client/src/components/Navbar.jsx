@@ -15,10 +15,27 @@ function Navbar() {
   const { logout } = useAuth();
   const navigate = useNavigate();
   const [search, setSearch] = useState();
+  // const [searchResult, setSearchResult] = useState([]);
+  // useEffect(() => {
+  //   getInfo();
+  // }, [setSearch]);
+
+  // const getInfo = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       `http://localhost:4000/products?keywords=${search}`
+  //     );
+  //     setSearchResult(response.data.data);
+  //     console.log(response.data.data);
+  //   } catch (error) {
+  //     console.log("Error fetching data");
+  //   }
+  // };
+
   return (
     <nav className="bg-gray-800 box-border">
-      <div className="relative box-border max-w flex flex-row justify-between flex-wrap items-center mx-auto p-5">
-        <Link
+      <div className="flex flex-row max-w max-h justify-between items-center mx-auto p-5">
+        <div
           to="/AuthHomePage"
           href="#"
           onClick={() => navigate(`/AuthHomePage`)}
@@ -26,7 +43,7 @@ function Navbar() {
         >
           <img src={hammer} className="w-5 h-5" />
           <span> POK!</span>
-        </Link>
+        </div>
 
         <div class="absolute flex box-border right-0 ">
           <div className="flex box-border pr-4 text-white relative">
